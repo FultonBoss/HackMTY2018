@@ -82,42 +82,20 @@ function onSoundLoaded(evt)
     };
     var button_1 = document.getElementById('playback_1');
     button_1.onclick = function () {
-        byId('sound').playbackRate = -1;
+    var button_1 = document.getElementById('playback_1');
+    button_1.onclick = function () {
+           intervalRewind = setInterval(function(){
+       byId('sound').playbackRate = 1.0;
+       if(byId('sound').currentTime == 1){
+           clearInterval(intervalRewind);
+           byId('sound').playbackRate = 1;   
+       }
+       else{
+           byId('sound').currentTime += -.1;
+       }
+            },33);
     };
-    
-    var guardar = document.getElementById('guardar');
-    guardar.onclick = function (){
-         document.getElementById('guardar').addEventListener("click", function () {
-            // Generate download of hello.txt file with some content
-            var text = "prueba";
-            var filename = "hello.txt";
-
-            download(filename, text);
-        }, false);
-    }
-    
-    var salvarmp3 = document.getElementById('salvar');
-    salvarmp3.onclick = function () {
-        document.getElementById("salvar").addEventListener("click", function () {
-
-            download();
-        }, false);
-    
-    }
-    
-    //data:audio/mp3;base64,...
-    function download() {
-        var content = document.getElementById('sound').play();
-
-        var filename = "helli.mp3";
-
-        var blob = new Blob([content], {
-            type: "data:audio/mp3;base64"
-        });
-
-        saveAs(blob, filename);
-    }
-    
+    };
 }
 
 
