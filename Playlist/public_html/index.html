@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <input type="file" id="song" multiple>
+        <!--<input id="clickMe" type="button" value="clickme" onclick="add(document.getElementById('song'))">-->
+        <ul id="playlist">
+        </ul>
+        <script>
+            var songs = document.getElementById('song');
+            var list = "";
+            var index = 0;
+            songs.addEventListener('change', function(event){
+                var input = event.target;
+                for (var i = 0; i < input.files.length; i++){
+                    localStorage.setItem("name", input.files.name);
+                    list += "<li><a href=" + localStorage.getItem(input.files[i].name) + "><b>Track " + (index + 1)
+                            + ":</b> " + input.files[i].name + "</a></li>";
+                    document.getElementById("playlist").innerHTML = list;
+                    index ++;
+                }
+            });
+            /*var playlist = [];
+            var index = 0;
+            var list = "";
+            function add(song) {
+                playlist[index] = song;
+                list += "<li><a href=" + playlist[index] + ">Song No. " + (index + 1) + "</a></li>";
+                index++;
+                document.getElementById("playlist").innerHTML =
+                        list;
+            }*/
+        </script>
+    </body>
+</html>
