@@ -1,0 +1,110 @@
+<html>
+    <head>
+        <title>Mashup</title>
+        <!-- links a los formatos de presentacion -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+        <link rel="stylesheet" href="style.css"
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="visualizer.js"></script>
+        <script src="newjavascript.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- le da los atributos al texto -->
+        <script>
+            // permite la inicializacion del programa en el bloque
+            let initialized = false;
+            // abre la ventana y la ejecuta inmediatamente con la funcion
+            window.onload = function () {
+                // ejecuta el javascript cuando se cambia la opcion. Para elegir documentos
+                mFileInput.onchange = function () {
+                    // hace que se pueda dar referencia al documento
+                    var files = this.files;
+                    var file = URL.createObjectURL(files[0]);
+                    // ejecuta  el documento
+                    byId('sound').src = file;
+                    byId('sound').play();
+                    // ejecuta las graficas
+                    if (!initialized) {
+                        initializeVisualizer($("canvas")[0], $("audio")[0]);
+                        initialized = true;
+                    }
+                    updateSongText(files[0].name);
+                };
+            };
+        </script>
+    </head>
+    <!-- color background -->
+    <body style="background-color: #2c1242">
+        <ul>
+            <li><a><img src="imgs/MashupLogo.png" class="imageleague"></a></li>
+        </ul>
+        <div class="container">
+            <h1 style="color:#ffffff">Bienvenido a nuestro editor de audio</h1>
+        </div>
+        <div class="container">
+            <h3 style="color:#ffffff">En nuestra aplicacion web ademas de poder cortar tus audios
+                podras modificar la velocidad de estos.
+            </h3>
+            <div class="container">
+                <img src="imgs/sound.jpg" width="1100px" height="500px">
+            </div>
+        </div>
+        <div class="container">
+            <h1 style="color:#ffffff"> Empieza a editar tus audios</h1>  
+            <div>
+                <audio controls id="sound"></audio>
+            </div>
+            <canvas style="padding:0; margin:0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" id="canvas" width="920px" height="150px"></canvas>
+            <div class="dropdown">
+                <button class="dropbtn">Dropdown</button>
+                <div class="dropdown-content">
+                    <input style="color:white;" type="file" id="mFileInput" accept="audio/*" />
+                    <div class="dropbtn" >
+                        <button style="background-color:#1c2a48"class="link" id="playback2">Velocidad = 25%</button>
+                    </div> 
+                    <div class="dropbtn">
+                        <button style="background-color: #1c2a48" class="link" id="playback5">Velocidad = 50%</button>
+                    </div>
+                    <div class="dropbtn">
+                        <button style="background-color: #1c2a48" class="link" id="playback7">Velocidad = 50%</button>
+                    </div>
+                    <div class="dropbtn">
+                        <button style="background-color:#1c2a48" class="link" id="playback10">Velocidad = 100%</button>
+                    </div>
+                    <div class="dropbtn">
+                        <button style="background-color:#1c2a48" class="link" id="playback12">Velocidad = 125%</button>
+                    </div>
+                    <div class="dropbtn">
+                        <button style="background-color:#1c2a48" class="link" id="playback15">Velocidad = 150%</button>
+                    </div>
+                    <div class="dropbtn">
+                        <button style="background-color:#1c2a48" class="link" id="playback17">Velocidad = 175%</button>
+                    </div> 
+                    <div class="dropbtn">
+                        <button style="background-color:#1c2a48" class="link" id="playback20">Velocidad = 200%</button>
+                    </div>
+                    <div class="dropbtn">
+                        <button style="background-color:#1c2a48" class="link" id="playback22">Velocidad = 225%</button>
+                    </div>
+                    <div class="dropbtn">
+                        <button style="background-color:#1c2a48" class="link" id="playback25">Velocidad = 250%</button>
+                    </div>
+                    <div class="dropbtn">
+                        <button style="background-color:#1c2a48" class="link" id="playback27">Velocidad = 275%</button>
+                    </div>
+                    <div class="dropbtn">
+                        <button style="background-color:#1c2a48" class="link" id="playback30">Velocidad = 300%</button>
+                    </div>
+                </div>
+            </div>
+            <div class="dropbtn" class="dropdown-content">
+                <button style="background-color:#1c2a48" class="link" id="playback_1">Audio invertido </button>
+            </div>
+            <img id='image'/>
+            <video id='video'/>
+        </div>
+        <!-- caracteristicas de lo visual -->
+    </body>
+</html>
